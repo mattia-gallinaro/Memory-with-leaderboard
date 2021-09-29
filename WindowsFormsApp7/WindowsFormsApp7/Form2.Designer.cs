@@ -56,6 +56,7 @@ namespace WindowsFormsApp7
             this.carta1.Size = new System.Drawing.Size(112, 144);
             this.carta1.TabIndex = 0;
             this.carta1.TabStop = false;
+            this.carta1.Click += new System.EventHandler(this.carta1_Click);
             // 
             // carta2
             // 
@@ -65,6 +66,7 @@ namespace WindowsFormsApp7
             this.carta2.Size = new System.Drawing.Size(112, 144);
             this.carta2.TabIndex = 1;
             this.carta2.TabStop = false;
+            this.carta2.Click += new System.EventHandler(this.carta2_Click);
             // 
             // carta3
             // 
@@ -74,6 +76,7 @@ namespace WindowsFormsApp7
             this.carta3.Size = new System.Drawing.Size(112, 144);
             this.carta3.TabIndex = 2;
             this.carta3.TabStop = false;
+            this.carta3.Click += new System.EventHandler(this.carta3_Click);
             // 
             // carta4
             // 
@@ -83,6 +86,7 @@ namespace WindowsFormsApp7
             this.carta4.Size = new System.Drawing.Size(112, 144);
             this.carta4.TabIndex = 3;
             this.carta4.TabStop = false;
+            this.carta4.Click += new System.EventHandler(this.carta4_Click);
             // 
             // carta5
             // 
@@ -92,6 +96,7 @@ namespace WindowsFormsApp7
             this.carta5.Size = new System.Drawing.Size(112, 144);
             this.carta5.TabIndex = 4;
             this.carta5.TabStop = false;
+            this.carta5.Click += new System.EventHandler(this.carta5_Click);
             // 
             // carta6
             // 
@@ -101,6 +106,7 @@ namespace WindowsFormsApp7
             this.carta6.Size = new System.Drawing.Size(112, 144);
             this.carta6.TabIndex = 5;
             this.carta6.TabStop = false;
+            this.carta6.Click += new System.EventHandler(this.carta6_Click);
             // 
             // carta7
             // 
@@ -110,6 +116,7 @@ namespace WindowsFormsApp7
             this.carta7.Size = new System.Drawing.Size(112, 144);
             this.carta7.TabIndex = 6;
             this.carta7.TabStop = false;
+            this.carta7.Click += new System.EventHandler(this.carta7_Click);
             // 
             // carta8
             // 
@@ -119,6 +126,7 @@ namespace WindowsFormsApp7
             this.carta8.Size = new System.Drawing.Size(112, 144);
             this.carta8.TabIndex = 10;
             this.carta8.TabStop = false;
+            this.carta8.Click += new System.EventHandler(this.carta8_Click);
             // 
             // label1
             // 
@@ -126,9 +134,9 @@ namespace WindowsFormsApp7
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(652, 64);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(240, 31);
+            this.label1.Size = new System.Drawing.Size(161, 31);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Numero di mosse: ";
+            this.label1.Text = "E\' il turno di:";
             // 
             // Form2
             // 
