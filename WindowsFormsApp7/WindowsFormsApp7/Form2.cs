@@ -36,20 +36,21 @@ namespace WindowsFormsApp7
 
         private void GenerazioneCarte()
         {
+            SelezionePrimoGiocatore();
             Random generatore = new Random();
             int numerogen = 0;
             for (int i = 0; i < 8; i++)
             {
                 numerogen = generatore.Next(0, 4);
                 AumentoConteggioCarte(numerogen);
-                if(i > 1 && controllo(numerogen) == -1)
+                if (i > 1 && controllo(numerogen) == -1)
                 {
                     i--;
                 }
                 else
                 {
                     //creo carta con rispettivo sfondo e 
-                    fiori[i]= AssegnazioneCarte(numerogen);
+                    fiori[i] = AssegnazioneCarte(numerogen);
                 }
 
             }
@@ -59,10 +60,10 @@ namespace WindowsFormsApp7
         {
             Random selezione = new Random();
             int turno = selezione.Next(0, 2);
-            if(turno == 0)
+            if (turno == 0)
             {
                 turnoG1 = true;
-                
+
             }
             else
             {
@@ -71,7 +72,7 @@ namespace WindowsFormsApp7
         }
         private int controllo(int valore)
         {
-            if(quantitàgenerate[valore] == 2)
+            if (quantitàgenerate[valore] == 3)
             {
                 return -1;
             }
@@ -82,7 +83,7 @@ namespace WindowsFormsApp7
         }
         private void AumentoConteggioCarte(int numero)
         {
-            if(quantitàgenerate[numero] < 2)
+            if (quantitàgenerate[numero] < 3)
             {
                 quantitàgenerate[numero]++;
             }
@@ -110,31 +111,36 @@ namespace WindowsFormsApp7
         }
         private void AssegnazioneSfondiCarte()
         {
-            carta1.Image = Properties.Resources.sfondo_carta;
-            carte[1] = carta1;
-            carta2.Image = Properties.Resources.sfondo_carta;
-            carta3.Image = Properties.Resources.sfondo_carta;
-            carta4.Image = Properties.Resources.sfondo_carta;
-            carta5.Image = Properties.Resources.sfondo_carta;
-            carta6.Image = Properties.Resources.sfondo_carta;
-            carta7.Image = Properties.Resources.sfondo_carta;
-            carta8.Image = Properties.Resources.sfondo_carta;
+            carte[0] = carta1;
+            carte[1] = carta2;
+            carte[2] = carta3;
+            carte[3] = carta4;
+            carte[4] = carta5;
+            carte[5] = carta6;
+            carte[6] = carta7;
+            carte[7] = carta8;
+            for (int i = 0; i < carte.Length; i++)
+            {
+                carte[i].Image = Properties.Resources.sfondo_carta;
+            }
         }
         private void GiraCarta(int n1)
         {
             n1 -= 1;
             switch (n1)
             {
-                case 0: 
-                    carta1.Image = 
+                case 0:
                     break;
             }
         }
         private void CartaClick(int indicecarta)
         {
-            
+
         }
-        private System.Drawing.Image 
+        private System.Drawing.Image creazioneimmagine()
+        {
+            return Properties.Resources.campane_blu;
+        }
         private void carta1_Click(object sender, EventArgs e)
         {
             CartaClick(1);
