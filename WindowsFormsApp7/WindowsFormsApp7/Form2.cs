@@ -16,19 +16,16 @@ namespace WindowsFormsApp7
         {
             InitializeComponent();
         }
-        //private struct FioriList
-        //{
-        //    int posizione;
 
-        //}
-        //creo array che contengano le quantità di carte generate per avere meno codice 
-        //List<FioriList> carte = new List<FioriList> { };
+        string nomeG1, nomeG2;
         bool turnoG1;
-        static int tulipani = 0, fiori2 = 0, fiori3 = 0, fiori4 = 0;
-        int[] quantitàgenerate = new int[4] { tulipani, fiori2, fiori3, fiori4 };
-        string[] fiori = new string[8];
+        static int magnolia = 0, margherita = 0, primula = 0, campane_blu = 0;
+        int[] quantitàgenerate = new int[4] { magnolia, margherita, primula, campane_blu };
+        bool[] selezioneCarte = new bool[8];
+        string[] fioriGenerati = new string[8];
         PictureBox[] carte = new PictureBox[8];
-        int carteselezionate = 0, card1 = 0, card2 = 0;
+        int carteselezionate = 0, card1 = 0, card2 = 0, coppiecarteG1 = 0, coppiecarteG2 = 0;
+
         private void Form2_Load(object sender, EventArgs e)
         {
             GenerazioneCarte();
@@ -50,12 +47,14 @@ namespace WindowsFormsApp7
                 else
                 {
                     //creo carta con rispettivo sfondo e 
-                    fiori[i] = AssegnazioneCarte(numerogen);
+                    fioriGenerati[i] = AssegnazioneCarte(numerogen);
                 }
 
             }
             AssegnazioneSfondiCarte();
+            NascondiBottoni();
         }
+        //serve per generare randomicamente il giocatore che dovrà iniziare
         private void SelezionePrimoGiocatore()
         {
             Random selezione = new Random();
@@ -95,16 +94,16 @@ namespace WindowsFormsApp7
             switch (indice)
             {
                 case 0:
-                    tipofiore = "tulipano";
+                    tipofiore = "magnolia";
                     break;
                 case 1:
-                    tipofiore = "altro";
+                    tipofiore = "margherita";
                     break;
                 case 2:
-                    tipofiore = "fiore";
+                    tipofiore = "primula";
                     break;
                 case 3:
-                    tipofiore = "diverso";
+                    tipofiore = "campane_blu";
                     break;
             };
             return tipofiore;
@@ -124,22 +123,105 @@ namespace WindowsFormsApp7
                 carte[i].Image = Properties.Resources.sfondo_carta;
             }
         }
-        private void GiraCarta(int n1)
+        private void NascondiBottoni()
+        {
+            for (int i = 0; i < carte.Length; i++)
+            {
+                carte[i].Visible = false;
+            }
+            label3.Visible = false;
+            textBox2.Visible = false;
+            button2.Visible = false;
+        }
+        private void CartaClick(int n1)
         {
             n1 -= 1;
-            switch (n1)
+            if(selezioneCarte[n1] == false)
             {
-                case 0:
-                    break;
+                carte[n1].Image = creazioneimmagine(n1);
+                selezioneCarte[n1] = true;
+                ControlloCoppie(n1);
             }
         }
-        private void CartaClick(int indicecarta)
+        private void ControlloCoppie(int indicecarta)
         {
-
+            carteselezionate++;
+            if(carteselezionate % 2 == 0)
+            {
+                card2 = indicecarta;
+                if(fioriGenerati[card1] != fioriGenerati[card2])
+                {
+                    selezioneCarte[card1] = false;
+                    selezioneCarte[card2] = false;
+                    carteselezionate -= 2;
+                    carte[card1].Image = Properties.Resources.sfondo_carta;
+                    carte[card2].Image = Properties.Resources.sfondo_carta;
+                    CambiaTurno();
+                }
+                else
+                {
+                    if (turnoG1)
+                    {
+                        coppiecarteG1++;
+                    }
+                    else
+                    {
+                        coppiecarteG2++;
+                    }
+                }
+            }
+            else
+            {
+                card1 = indicecarta;
+            }
+            if (carteselezionate == 8)
+            {
+                this.BackColor = Color.Green;
+                if (coppiecarteG1 > coppiecarteG2)
+                {
+                    MessageBox.Show("Il vincitore della partita è\n: {0}", nomeG1);
+                }
+                else if (coppiecarteG1 > coppiecarteG2)
+                {
+                    MessageBox.Show("Il vincitore della partita è\n: {0} ",nomeG2);
+                }
+                else
+                {
+                    MessageBox.Show("Nessuno dei due giocatori ha vinto");
+                }
+            }
         }
-        private System.Drawing.Image creazioneimmagine()
+        private System.Drawing.Image creazioneimmagine(int indice)
         {
-            return Properties.Resources.campane_blu;
+            if(fioriGenerati[indice] == "magnolia")
+            {
+                return Properties.Resources.magnolia;
+            }
+            else if (fioriGenerati[indice] == "margherita")
+            {
+                return Properties.Resources.margherita;
+            }
+            else if (fioriGenerati[indice] == "primula")
+            {
+                return Properties.Resources.primula;
+            }
+            else
+            {
+                return Properties.Resources.campane_blu;
+            }
+        }
+        private void CambiaTurno()
+        {
+            if (turnoG1)
+            {
+                turnoG1 = false;
+                this.BackColor = Color.Red;
+            }
+            else
+            {
+                turnoG1 = true;
+                this.BackColor = Color.Blue;
+            }
         }
         private void carta1_Click(object sender, EventArgs e)
         {
@@ -149,6 +231,43 @@ namespace WindowsFormsApp7
         private void carta2_Click(object sender, EventArgs e)
         {
             CartaClick(2);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (textBox2.Text == "")
+            {
+                MessageBox.Show("Inserisci un nome prima di continuare");
+            }
+            else
+            {
+                nomeG2 = textBox2.Text;
+                for (int i = 0; i < carte.Length; i++)
+                {
+                    carte[i].Visible = true;
+                }
+                label3.Visible = false;
+                textBox2.Visible = false;
+                button2.Visible = false;
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(textBox1.Text == "")
+            {
+                MessageBox.Show("Inserisci un nome prima di continuare");
+            }
+            else
+            {
+                nomeG1 = textBox1.Text;
+                label3.Visible = true;
+                textBox2.Visible = true;
+                button2.Visible = true;
+                label2.Visible = false;
+                textBox1.Visible = false;
+                button1.Visible = false;
+            }
         }
 
         private void carta3_Click(object sender, EventArgs e)
@@ -184,7 +303,5 @@ namespace WindowsFormsApp7
         {
             Application.Exit();
         }
-        //genero un numero, controllo la variabile dei fiori nel caso in cui quel fiore sia stato generato troppe volte allora ne genera un'altro ripetendo il ciclo
-        //in un'array collego i fiori ai numeri generati in cui 1 corrisponde ad un fiore 2 ad un'altro e così via
     }
 }

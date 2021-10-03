@@ -30,11 +30,9 @@ namespace WindowsFormsApp7
         private void InitializeComponent()
         {
             this.btn1 = new System.Windows.Forms.Button();
-            this.nicktxtbox = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.esciBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btn1
@@ -47,23 +45,6 @@ namespace WindowsFormsApp7
             this.btn1.Text = "Gioca";
             this.btn1.UseVisualStyleBackColor = true;
             this.btn1.Click += new System.EventHandler(this.btn1_Click);
-            // 
-            // nicktxtbox
-            // 
-            this.nicktxtbox.Location = new System.Drawing.Point(304, 214);
-            this.nicktxtbox.Name = "nicktxtbox";
-            this.nicktxtbox.Size = new System.Drawing.Size(141, 20);
-            this.nicktxtbox.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(266, 187);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(209, 24);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Inserisci il tuo nickname";
             // 
             // label2
             // 
@@ -86,15 +67,16 @@ namespace WindowsFormsApp7
             this.button1.Text = "Classifica";
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // esciBtn
             // 
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(304, 359);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(141, 42);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Esci";
-            this.button2.UseVisualStyleBackColor = true;
+            this.esciBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.esciBtn.Location = new System.Drawing.Point(304, 359);
+            this.esciBtn.Name = "esciBtn";
+            this.esciBtn.Size = new System.Drawing.Size(141, 42);
+            this.esciBtn.TabIndex = 5;
+            this.esciBtn.Text = "Esci";
+            this.esciBtn.UseVisualStyleBackColor = true;
+            this.esciBtn.Click += new System.EventHandler(this.escibtn_Click);
             // 
             // SchermataPrincipale
             // 
@@ -102,11 +84,9 @@ namespace WindowsFormsApp7
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(784, 561);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.esciBtn);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.nicktxtbox);
             this.Controls.Add(this.btn1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "SchermataPrincipale";
@@ -119,11 +99,9 @@ namespace WindowsFormsApp7
         #endregion
 
         private System.Windows.Forms.Button btn1;
-        private System.Windows.Forms.TextBox nicktxtbox;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button esciBtn;
     }
 }
 

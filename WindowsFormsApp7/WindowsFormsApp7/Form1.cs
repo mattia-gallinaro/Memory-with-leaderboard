@@ -20,26 +20,27 @@ namespace WindowsFormsApp7
 
         private void btn1_Click(object sender, EventArgs e)
         {
-            if (nicktxtbox.Text == "")
-            {
-                MessageBox.Show("Prima di inziare a giocare/n inserisci un nickname");
-            }
-            else
-            {
-                Salvataggio_Nome(nicktxtbox.Text);
-            }
+            //if (nicktxtbox.Text == "")
+            //{
+            //    MessageBox.Show("Prima di inziare a giocare\n inserisci un nickname");
+            //}
+            //else
+            //{
+            //    Salvataggio_Nome(nicktxtbox.Text);
+            //}
+            ApriSchermataGioco();
         }
 
         
 
-        private void Salvataggio_Nome(string nick)
-        {
-            string posizione_file = AppDomain.CurrentDomain.BaseDirectory + "@NomePlayer.txt";
-            StreamWriter sw = new StreamWriter(posizione_file, false);
-            sw.WriteLine(nick);
-            sw.Close();
-            ApriSchermataGioco();
-        }
+        //private void Salvataggio_Nome(string nick)
+        //{
+        //    string posizione_file = AppDomain.CurrentDomain.BaseDirectory + "@NomePlayer.txt";
+        //    StreamWriter sw = new StreamWriter(posizione_file, false);
+        //    sw.WriteLine(nick);
+        //    sw.Close();
+        //    ApriSchermataGioco();
+        //}
         private void ApriSchermataGioco()
         {
             this.Hide();
@@ -53,6 +54,11 @@ namespace WindowsFormsApp7
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void escibtn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
