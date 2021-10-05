@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp7
@@ -52,7 +54,7 @@ namespace WindowsFormsApp7
 
             }
             AssegnazioneSfondiCarte();
-            NascondiBottoni();
+            NascondiOggetti();
         }
         //serve per generare randomicamente il giocatore che dovrà iniziare
         private void SelezionePrimoGiocatore()
@@ -62,11 +64,12 @@ namespace WindowsFormsApp7
             if (turno == 0)
             {
                 turnoG1 = true;
-
+                this.BackColor = Color.Blue;
             }
             else
             {
                 turnoG1 = false;
+                this.BackColor = Color.Red;
             }
         }
         private int controllo(int valore)
@@ -123,12 +126,13 @@ namespace WindowsFormsApp7
                 carte[i].Image = Properties.Resources.sfondo_carta;
             }
         }
-        private void NascondiBottoni()
+        private void NascondiOggetti()
         {
             for (int i = 0; i < carte.Length; i++)
             {
                 carte[i].Visible = false;
             }
+            label1.Visible = false;
             label3.Visible = false;
             textBox2.Visible = false;
             button2.Visible = false;
@@ -153,6 +157,7 @@ namespace WindowsFormsApp7
                 {
                     selezioneCarte[card1] = false;
                     selezioneCarte[card2] = false;
+                    wait(500);
                     carteselezionate -= 2;
                     carte[card1].Image = Properties.Resources.sfondo_carta;
                     carte[card2].Image = Properties.Resources.sfondo_carta;
@@ -179,16 +184,43 @@ namespace WindowsFormsApp7
                 this.BackColor = Color.Green;
                 if (coppiecarteG1 > coppiecarteG2)
                 {
-                    MessageBox.Show("Il vincitore della partita è\n: {0}", nomeG1);
+                    MessageBox.Show("Il vincitore della partita è:\n" + nomeG1);
+                    SalvaVittoria(nomeG1);
                 }
-                else if (coppiecarteG1 > coppiecarteG2)
+                else if (coppiecarteG1 < coppiecarteG2)
                 {
-                    MessageBox.Show("Il vincitore della partita è\n: {0} ",nomeG2);
+                    MessageBox.Show("Il vincitore della partita è:\n " + nomeG2);
+                    SalvaVittoria(nomeG2);
                 }
                 else
                 {
                     MessageBox.Show("Nessuno dei due giocatori ha vinto");
                 }
+            }
+        }
+        public void wait(int milliseconds)
+        {
+            //crea un oggetto Timer
+            var timer1 = new System.Windows.Forms.Timer();
+            //controlla che il valore dei millisecondi non sia 0 o minore di 0
+            if (milliseconds == 0 || milliseconds < 0) return;
+
+            // inizia il timer
+            timer1.Interval = milliseconds;
+            timer1.Enabled = true;
+            timer1.Start();
+
+            //controlla se il valore inserito in millisecondi è trascorso
+            timer1.Tick += (s, e) =>
+            {
+                timer1.Enabled = false;
+                timer1.Stop();
+                // finisce il timer
+            };
+
+            while (timer1.Enabled)//permette di elaborare le azioni che il form riceve
+            {
+                Application.DoEvents();
             }
         }
         private System.Drawing.Image creazioneimmagine(int indice)
@@ -235,7 +267,7 @@ namespace WindowsFormsApp7
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text == "")
+            if (textBox2.Text == "" || textBox2.Text == nomeG1)
             {
                 MessageBox.Show("Inserisci un nome prima di continuare");
             }
@@ -246,6 +278,7 @@ namespace WindowsFormsApp7
                 {
                     carte[i].Visible = true;
                 }
+                label1.Visible = true;
                 label3.Visible = false;
                 textBox2.Visible = false;
                 button2.Visible = false;
@@ -298,6 +331,67 @@ namespace WindowsFormsApp7
         private void carta8_Click(object sender, EventArgs e)
         {
             CartaClick(8);
+        }
+        private void SalvaVittoria(string nomevincitore)
+        {
+            string posizione_file = AppDomain.CurrentDomain.BaseDirectory + "Classifica.txt";
+            if (!File.Exists(posizione_file))
+            {
+                File.Create(posizione_file);
+            }
+            string[] giocatorifile = File.ReadAllLines(posizione_file);
+            bool salvataggio = false;
+            for(int i= 0; i < 3 && salvataggio == false; i++)
+            {
+                switch (i)
+                {
+                    case 0:
+                        for (int c = 0; c < giocatorifile.Length; c++)
+                        {
+
+                            string[] playerfile = giocatorifile[c].Split(',');
+                            if (playerfile[0] == nomevincitore)
+                            {
+                                int vittorie = Convert.ToInt32(playerfile[1]) + 1;
+                                playerfile[1] = Convert.ToString(vittorie);
+                                giocatorifile[c] = playerfile[0] + "," + playerfile[1];
+                                c = giocatorifile.Length - 1;
+                                salvataggio = true;
+                            }
+                        }
+                        break;
+                    case 1:
+                        string persona = nomevincitore + "," + "";
+                        Array.Resize(ref giocatorifile, giocatorifile.Length + 1);
+                        giocatorifile[giocatorifile.Length - 1] = persona;
+                        salvataggio = true;
+                        break; 
+                };
+            }
+            File.WriteAllLines(posizione_file, giocatorifile);
+            RiordinaArray();
+        }
+        private string[] RiordinaArray()
+        {
+            string posizione_file = AppDomain.CurrentDomain.BaseDirectory + "Classifica.txt";
+            string[] array = File.ReadAllLines(posizione_file);
+            for (int i = 0; i < array.Length - 1; i++)
+            {
+                for (int j = 0; j < array.Length - 1; j++)
+                {
+                    string[] g1 = array[j].Split(',');
+                    string[] g2 = array[j + 1].Split(',');
+                    if (Int32.Parse(g1[1]) < Int32.Parse(g2[1]))
+                    {
+                        var t = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = t;
+                    }
+                }
+
+            }
+            File.WriteAllLines(posizione_file, array);
+            return array;
         }
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
