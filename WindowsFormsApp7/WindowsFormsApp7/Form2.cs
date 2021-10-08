@@ -35,7 +35,7 @@ namespace WindowsFormsApp7
 
         private void GenerazioneCarte()
         {
-            SelezionePrimoGiocatore();
+            //resettavariabili();
             Random generatore = new Random();
             int numerogen = 0;
             for (int i = 0; i < 8; i++)
@@ -56,6 +56,19 @@ namespace WindowsFormsApp7
             AssegnazioneSfondiCarte();
             NascondiOggetti();
         }
+        //private void resettavariabili()
+        //{
+        //    carteselezionate = 0;
+        //    card1 = 0;
+        //    card2 = 0;
+        //    coppiecarteG1 = 0;
+        //    coppiecarteG2 = 0;
+        //    for (int i = 0; i< 8; i++)
+        //    {
+        //        selezioneCarte[i] = false;
+        //        fioriGenerati[i] = "";
+        //    }
+        //}
         //serve per generare randomicamente il giocatore che dovrà iniziare
         private void SelezionePrimoGiocatore()
         {
@@ -65,11 +78,13 @@ namespace WindowsFormsApp7
             {
                 turnoG1 = true;
                 this.BackColor = Color.Blue;
+                label1.Text = "E' il turno di " + nomeG1;
             }
             else
             {
                 turnoG1 = false;
                 this.BackColor = Color.Red;
+                label1.Text = "E' il turno di " + nomeG2;
             }
         }
         private int controllo(int valore)
@@ -136,6 +151,8 @@ namespace WindowsFormsApp7
             label3.Visible = false;
             textBox2.Visible = false;
             button2.Visible = false;
+            backtostartbtn.Visible = false;
+            restartbtn.Visible = false;
         }
         private void CartaClick(int n1)
         {
@@ -185,16 +202,25 @@ namespace WindowsFormsApp7
                 if (coppiecarteG1 > coppiecarteG2)
                 {
                     MessageBox.Show("Il vincitore della partita è:\n" + nomeG1);
+                    label1.Text = "Ha vinto: " + nomeG1;
+                    backtostartbtn.Visible = true;
+                    restartbtn.Visible = true;
                     SalvaVittoria(nomeG1);
                 }
                 else if (coppiecarteG1 < coppiecarteG2)
                 {
                     MessageBox.Show("Il vincitore della partita è:\n " + nomeG2);
+                    label1.Text = "Ha vinto: " + nomeG2;
+                    backtostartbtn.Visible = true;
+                    restartbtn.Visible = true;
                     SalvaVittoria(nomeG2);
                 }
                 else
                 {
                     MessageBox.Show("Nessuno dei due giocatori ha vinto");
+                    label1.Text = "Pareggio";
+                    backtostartbtn.Visible = true;
+                    restartbtn.Visible = true;
                 }
             }
         }
@@ -248,11 +274,13 @@ namespace WindowsFormsApp7
             {
                 turnoG1 = false;
                 this.BackColor = Color.Red;
+                label1.Text = "E' il turno di: \n" + nomeG2;
             }
             else
             {
                 turnoG1 = true;
                 this.BackColor = Color.Blue;
+                label1.Text = "E' il turno di: \n" + nomeG1;
             }
         }
         private void carta1_Click(object sender, EventArgs e)
@@ -278,6 +306,7 @@ namespace WindowsFormsApp7
                 {
                     carte[i].Visible = true;
                 }
+                SelezionePrimoGiocatore();
                 label1.Visible = true;
                 label3.Visible = false;
                 textBox2.Visible = false;
@@ -287,7 +316,7 @@ namespace WindowsFormsApp7
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if(textBox1.Text == "")
+            if(textBox1.Text == ""/*|| textBox1.KeyPress == ","*/)
             {
                 MessageBox.Show("Inserisci un nome prima di continuare");
             }
@@ -306,6 +335,22 @@ namespace WindowsFormsApp7
         private void carta3_Click(object sender, EventArgs e)
         {
             CartaClick(3);
+        }
+
+        private void backtostartbtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            SchermataPrincipale f1 = new SchermataPrincipale();
+            f1.ShowDialog();
+        }
+
+        private void restartbtn_Click(object sender, EventArgs e)
+        {
+            //giocoreiniziato = true;
+            //GenerazioneCarte();
+            this.Hide();
+            Form2 f2 = new Form2();
+            f2.ShowDialog();
         }
 
         private void carta4_Click(object sender, EventArgs e)
@@ -361,7 +406,7 @@ namespace WindowsFormsApp7
                         }
                         break;
                     case 1:
-                        string persona = nomevincitore + "," + "";
+                        string persona = nomevincitore + ",1";
                         Array.Resize(ref giocatorifile, giocatorifile.Length + 1);
                         giocatorifile[giocatorifile.Length - 1] = persona;
                         salvataggio = true;

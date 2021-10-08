@@ -44,6 +44,8 @@ namespace WindowsFormsApp7
             this.button2 = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.backtostartbtn = new System.Windows.Forms.Button();
+            this.restartbtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.carta1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.carta2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.carta3)).BeginInit();
@@ -208,12 +210,36 @@ namespace WindowsFormsApp7
             this.label3.TabIndex = 15;
             this.label3.Text = "Inserisci il nome del secondo giocatore";
             // 
+            // backtostartbtn
+            // 
+            this.backtostartbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.backtostartbtn.Location = new System.Drawing.Point(658, 261);
+            this.backtostartbtn.Name = "backtostartbtn";
+            this.backtostartbtn.Size = new System.Drawing.Size(250, 35);
+            this.backtostartbtn.TabIndex = 18;
+            this.backtostartbtn.Text = "Torna al menù principale";
+            this.backtostartbtn.UseVisualStyleBackColor = true;
+            this.backtostartbtn.Click += new System.EventHandler(this.backtostartbtn_Click);
+            // 
+            // restartbtn
+            // 
+            this.restartbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.restartbtn.Location = new System.Drawing.Point(658, 210);
+            this.restartbtn.Name = "restartbtn";
+            this.restartbtn.Size = new System.Drawing.Size(250, 34);
+            this.restartbtn.TabIndex = 19;
+            this.restartbtn.Text = "Ricomincia";
+            this.restartbtn.UseVisualStyleBackColor = true;
+            this.restartbtn.Click += new System.EventHandler(this.restartbtn_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(953, 389);
+            this.Controls.Add(this.restartbtn);
+            this.Controls.Add(this.backtostartbtn);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.label3);
@@ -263,5 +289,7 @@ namespace WindowsFormsApp7
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button backtostartbtn;
+        private System.Windows.Forms.Button restartbtn;
     }
 }
