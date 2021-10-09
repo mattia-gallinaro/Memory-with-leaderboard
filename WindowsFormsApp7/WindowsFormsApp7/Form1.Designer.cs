@@ -91,7 +91,9 @@ namespace WindowsFormsApp7
             this.Controls.Add(this.btn1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "SchermataPrincipale";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.SchermataPrincipale_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 

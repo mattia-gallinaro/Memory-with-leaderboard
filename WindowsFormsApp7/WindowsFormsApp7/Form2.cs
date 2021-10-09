@@ -18,11 +18,11 @@ namespace WindowsFormsApp7
         {
             InitializeComponent();
         }
-
+        //variabili globali
         string nomeG1, nomeG2;
         bool turnoG1;
-        static int magnolia = 0, margherita = 0, primula = 0, campane_blu = 0;
-        int[] quantitàgenerate = new int[4] { magnolia, margherita, primula, campane_blu };
+        static int cs = 0, C = 0, javascript = 0, python = 0;
+        int[] quantitàgenerate = new int[4] { cs, C, javascript, python };
         bool[] selezioneCarte = new bool[8];
         string[] fioriGenerati = new string[8];
         PictureBox[] carte = new PictureBox[8];
@@ -35,7 +35,6 @@ namespace WindowsFormsApp7
 
         private void GenerazioneCarte()
         {
-            //resettavariabili();
             Random generatore = new Random();
             int numerogen = 0;
             for (int i = 0; i < 8; i++)
@@ -48,7 +47,7 @@ namespace WindowsFormsApp7
                 }
                 else
                 {
-                    //creo carta con rispettivo sfondo e 
+                    //crea una carta con rispettivo sfondo e 
                     fioriGenerati[i] = AssegnazioneCarte(numerogen);
                 }
 
@@ -56,37 +55,25 @@ namespace WindowsFormsApp7
             AssegnazioneSfondiCarte();
             NascondiOggetti();
         }
-        //private void resettavariabili()
-        //{
-        //    carteselezionate = 0;
-        //    card1 = 0;
-        //    card2 = 0;
-        //    coppiecarteG1 = 0;
-        //    coppiecarteG2 = 0;
-        //    for (int i = 0; i< 8; i++)
-        //    {
-        //        selezioneCarte[i] = false;
-        //        fioriGenerati[i] = "";
-        //    }
-        //}
         //serve per generare randomicamente il giocatore che dovrà iniziare
         private void SelezionePrimoGiocatore()
         {
             Random selezione = new Random();
             int turno = selezione.Next(0, 2);
-            if (turno == 0)
+            if (turno == 0)//inizia il giocatore 1 
             {
                 turnoG1 = true;
                 this.BackColor = Color.Blue;
                 label1.Text = "E' il turno di " + nomeG1;
             }
-            else
+            else //inizia il giocatore 2
             {
                 turnoG1 = false;
                 this.BackColor = Color.Red;
                 label1.Text = "E' il turno di " + nomeG2;
             }
         }
+        //se il tipo della carta è stato generato più di due volte, fa ripetere la generazione della carta
         private int controllo(int valore)
         {
             if (quantitàgenerate[valore] == 3)
@@ -98,6 +85,7 @@ namespace WindowsFormsApp7
                 return 0;
             }
         }
+        //aumenta la variabile che contiene il tipo di carta estratto e se più di due non viene aumentetao
         private void AumentoConteggioCarte(int numero)
         {
             if (quantitàgenerate[numero] < 3)
@@ -105,27 +93,28 @@ namespace WindowsFormsApp7
                 quantitàgenerate[numero]++;
             }
         }
-
+        //in base al numero estratto restituisce il tipocarta corrispondente
         private string AssegnazioneCarte(int indice)
         {
-            string tipofiore = "";
+            string tipocarta = "";
             switch (indice)
             {
                 case 0:
-                    tipofiore = "magnolia";
+                    tipocarta = "cs";
                     break;
                 case 1:
-                    tipofiore = "margherita";
+                    tipocarta = "C";
                     break;
                 case 2:
-                    tipofiore = "primula";
+                    tipocarta = "javascript";
                     break;
                 case 3:
-                    tipofiore = "campane_blu";
+                    tipocarta = "python";
                     break;
             };
-            return tipofiore;
+            return tipocarta;
         }
+        //salva le picturebox all'interno di un array e a ciascuna viene assegnato l'immagine
         private void AssegnazioneSfondiCarte()
         {
             carte[0] = carta1;
@@ -154,6 +143,7 @@ namespace WindowsFormsApp7
             backtostartbtn.Visible = false;
             restartbtn.Visible = false;
         }
+        //in base alla carta premuta, essa viene gira
         private void CartaClick(int n1)
         {
             n1 -= 1;
@@ -164,6 +154,8 @@ namespace WindowsFormsApp7
                 ControlloCoppie(n1);
             }
         }
+        //se le carte selezionate sono un multiplo di 2 vengono controllate per vedere se le carte selezionate
+        //formano una coppia oppure siano diverse, rigirandole e passando il turno all'altro giocatore
         private void ControlloCoppie(int indicecarta)
         {
             carteselezionate++;
@@ -196,31 +188,26 @@ namespace WindowsFormsApp7
             {
                 card1 = indicecarta;
             }
-            if (carteselezionate == 8)
+            if (carteselezionate == 8)//se sono state formate tutte le coppie il gioco finisce
             {
                 this.BackColor = Color.Green;
                 if (coppiecarteG1 > coppiecarteG2)
                 {
                     MessageBox.Show("Il vincitore della partita è:\n" + nomeG1);
                     label1.Text = "Ha vinto: " + nomeG1;
-                    backtostartbtn.Visible = true;
-                    restartbtn.Visible = true;
                     SalvaVittoria(nomeG1);
                 }
                 else if (coppiecarteG1 < coppiecarteG2)
                 {
                     MessageBox.Show("Il vincitore della partita è:\n " + nomeG2);
                     label1.Text = "Ha vinto: " + nomeG2;
-                    backtostartbtn.Visible = true;
-                    restartbtn.Visible = true;
                     SalvaVittoria(nomeG2);
                 }
                 else
                 {
                     MessageBox.Show("Nessuno dei due giocatori ha vinto");
                     label1.Text = "Pareggio";
-                    backtostartbtn.Visible = true;
-                    restartbtn.Visible = true;
+                    MostraBottoni();
                 }
             }
         }
@@ -249,25 +236,27 @@ namespace WindowsFormsApp7
                 Application.DoEvents();
             }
         }
+        //assegna alla picturebox, l'immagine corrispondente in base al valore dell'array dei tipi di carte corrispondente
         private System.Drawing.Image creazioneimmagine(int indice)
         {
-            if(fioriGenerati[indice] == "magnolia")
+            if(fioriGenerati[indice] == "cs")
             {
-                return Properties.Resources.magnolia;
+                return Properties.Resources.cs;
             }
-            else if (fioriGenerati[indice] == "margherita")
+            else if (fioriGenerati[indice] == "C")
             {
-                return Properties.Resources.margherita;
+                return Properties.Resources.C;
             }
-            else if (fioriGenerati[indice] == "primula")
+            else if (fioriGenerati[indice] == "javascript")
             {
-                return Properties.Resources.primula;
+                return Properties.Resources.javascript;
             }
             else
             {
-                return Properties.Resources.campane_blu;
+                return Properties.Resources.python;
             }
         }
+        //
         private void CambiaTurno()
         {
             if (turnoG1)
@@ -283,21 +272,29 @@ namespace WindowsFormsApp7
                 label1.Text = "E' il turno di: \n" + nomeG1;
             }
         }
-        private void carta1_Click(object sender, EventArgs e)
+
+        //crea un'altro form2 per ricomniare la partita
+        private void backtostartbtn_Click(object sender, EventArgs e)
         {
-            CartaClick(1);
+            this.Hide();
+            SchermataPrincipale f1 = new SchermataPrincipale();
+            f1.ShowDialog();
         }
 
-        private void carta2_Click(object sender, EventArgs e)
+        //per riavviare la partita viene creato un nuovo Form2 chiudendo quello appena usato
+        private void restartbtn_Click(object sender, EventArgs e)
         {
-            CartaClick(2);
+            this.Hide();
+            Form2 f2 = new Form2();
+            f2.ShowDialog();
         }
 
+        //Controllo il contenuto della textbox non sia vuoto ,che sia diverso dal nome del primo giocatore e che non contenga nessuna virgola
         private void button2_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text == "" || textBox2.Text == nomeG1)
+            if (textBox2.Text == "" || textBox2.Text == nomeG1 || controlloNome(textBox2.Text) == true)
             {
-                MessageBox.Show("Inserisci un nome prima di continuare");
+                MessageBox.Show("Inserisci un nome senza virgole prima di continuare");
             }
             else
             {
@@ -314,11 +311,12 @@ namespace WindowsFormsApp7
             }
         }
 
+        //Controllo il contenuto della textbox non sia vuoto e che non contenga nessuna virgola
         private void button1_Click(object sender, EventArgs e)
         {
-            if(textBox1.Text == ""/*|| textBox1.KeyPress == ","*/)
+            if (textBox1.Text == ""|| controlloNome(textBox1.Text) == true)
             {
-                MessageBox.Show("Inserisci un nome prima di continuare");
+                MessageBox.Show("Inserisci un nome senza virgole prima di continuare");
             }
             else
             {
@@ -332,26 +330,28 @@ namespace WindowsFormsApp7
             }
         }
 
+        private void MostraBottoni()
+        {
+            backtostartbtn.Visible = true;
+            restartbtn.Visible = true;
+        }
+        //in base alla carta che viene cliccata
+        //viene richiamata la funzione assegnandoli l'indice di quale carta girare nell'array di picturebox
+        private void carta1_Click(object sender, EventArgs e)
+        {
+            CartaClick(1);
+        }
+
+        private void carta2_Click(object sender, EventArgs e)
+        {
+            CartaClick(2);
+        }
+
         private void carta3_Click(object sender, EventArgs e)
         {
             CartaClick(3);
         }
 
-        private void backtostartbtn_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            SchermataPrincipale f1 = new SchermataPrincipale();
-            f1.ShowDialog();
-        }
-
-        private void restartbtn_Click(object sender, EventArgs e)
-        {
-            //giocoreiniziato = true;
-            //GenerazioneCarte();
-            this.Hide();
-            Form2 f2 = new Form2();
-            f2.ShowDialog();
-        }
 
         private void carta4_Click(object sender, EventArgs e)
         {
@@ -372,11 +372,13 @@ namespace WindowsFormsApp7
         {
             CartaClick(7);
         }
-
+        //Image[] immaginicarte = Image.FromFile(AppDomain.CurrentDomain.BaseDirectory)
         private void carta8_Click(object sender, EventArgs e)
         {
             CartaClick(8);
         }
+        //se il giocatore che ha vinto era già presente nel file, gli viene aggiunta una vittoria
+        //altrimenti viene salvato come nuovo giocatore
         private void SalvaVittoria(string nomevincitore)
         {
             string posizione_file = AppDomain.CurrentDomain.BaseDirectory + "Classifica.txt";
@@ -416,7 +418,9 @@ namespace WindowsFormsApp7
             File.WriteAllLines(posizione_file, giocatorifile);
             RiordinaArray();
         }
-        private string[] RiordinaArray()
+        //tramite bubble sort riordino i giocatori in ordine decrescente in base al numero di vittorie
+        //e dopo viene salvato nel file
+        private void RiordinaArray()
         {
             string posizione_file = AppDomain.CurrentDomain.BaseDirectory + "Classifica.txt";
             string[] array = File.ReadAllLines(posizione_file);
@@ -436,8 +440,24 @@ namespace WindowsFormsApp7
 
             }
             File.WriteAllLines(posizione_file, array);
-            return array;
+            MostraBottoni();
         }
+
+        //controllo se l'utente abbia inserito come nome anche solo una virgola
+        private bool controlloNome(string nome)
+        {
+            string[] controllo = nome.Split(',');
+            int quantità = controllo.Length;
+            if(quantità > 1)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();

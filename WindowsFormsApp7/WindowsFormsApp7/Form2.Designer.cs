@@ -29,14 +29,6 @@ namespace WindowsFormsApp7
         /// </summary>
         private void InitializeComponent()
         {
-            this.carta1 = new System.Windows.Forms.PictureBox();
-            this.carta2 = new System.Windows.Forms.PictureBox();
-            this.carta3 = new System.Windows.Forms.PictureBox();
-            this.carta4 = new System.Windows.Forms.PictureBox();
-            this.carta5 = new System.Windows.Forms.PictureBox();
-            this.carta6 = new System.Windows.Forms.PictureBox();
-            this.carta7 = new System.Windows.Forms.PictureBox();
-            this.carta8 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -46,103 +38,23 @@ namespace WindowsFormsApp7
             this.label3 = new System.Windows.Forms.Label();
             this.backtostartbtn = new System.Windows.Forms.Button();
             this.restartbtn = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.carta1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carta2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carta3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carta4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carta5)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carta6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carta7)).BeginInit();
+            this.carta8 = new System.Windows.Forms.PictureBox();
+            this.carta7 = new System.Windows.Forms.PictureBox();
+            this.carta6 = new System.Windows.Forms.PictureBox();
+            this.carta5 = new System.Windows.Forms.PictureBox();
+            this.carta4 = new System.Windows.Forms.PictureBox();
+            this.carta3 = new System.Windows.Forms.PictureBox();
+            this.carta2 = new System.Windows.Forms.PictureBox();
+            this.carta1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.carta8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carta7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carta6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carta5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carta4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carta3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carta2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carta1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // carta1
-            // 
-            this.carta1.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.carta1.Location = new System.Drawing.Point(51, 27);
-            this.carta1.Name = "carta1";
-            this.carta1.Size = new System.Drawing.Size(112, 144);
-            this.carta1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.carta1.TabIndex = 0;
-            this.carta1.TabStop = false;
-            this.carta1.Click += new System.EventHandler(this.carta1_Click);
-            // 
-            // carta2
-            // 
-            this.carta2.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.carta2.Location = new System.Drawing.Point(199, 27);
-            this.carta2.Name = "carta2";
-            this.carta2.Size = new System.Drawing.Size(112, 144);
-            this.carta2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.carta2.TabIndex = 1;
-            this.carta2.TabStop = false;
-            this.carta2.Click += new System.EventHandler(this.carta2_Click);
-            // 
-            // carta3
-            // 
-            this.carta3.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.carta3.Location = new System.Drawing.Point(347, 27);
-            this.carta3.Name = "carta3";
-            this.carta3.Size = new System.Drawing.Size(112, 144);
-            this.carta3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.carta3.TabIndex = 2;
-            this.carta3.TabStop = false;
-            this.carta3.Click += new System.EventHandler(this.carta3_Click);
-            // 
-            // carta4
-            // 
-            this.carta4.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.carta4.Location = new System.Drawing.Point(491, 27);
-            this.carta4.Name = "carta4";
-            this.carta4.Size = new System.Drawing.Size(112, 144);
-            this.carta4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.carta4.TabIndex = 3;
-            this.carta4.TabStop = false;
-            this.carta4.Click += new System.EventHandler(this.carta4_Click);
-            // 
-            // carta5
-            // 
-            this.carta5.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.carta5.Location = new System.Drawing.Point(51, 198);
-            this.carta5.Name = "carta5";
-            this.carta5.Size = new System.Drawing.Size(112, 144);
-            this.carta5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.carta5.TabIndex = 4;
-            this.carta5.TabStop = false;
-            this.carta5.Click += new System.EventHandler(this.carta5_Click);
-            // 
-            // carta6
-            // 
-            this.carta6.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.carta6.Location = new System.Drawing.Point(199, 198);
-            this.carta6.Name = "carta6";
-            this.carta6.Size = new System.Drawing.Size(112, 144);
-            this.carta6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.carta6.TabIndex = 5;
-            this.carta6.TabStop = false;
-            this.carta6.Click += new System.EventHandler(this.carta6_Click);
-            // 
-            // carta7
-            // 
-            this.carta7.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.carta7.Location = new System.Drawing.Point(347, 198);
-            this.carta7.Name = "carta7";
-            this.carta7.Size = new System.Drawing.Size(112, 144);
-            this.carta7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.carta7.TabIndex = 6;
-            this.carta7.TabStop = false;
-            this.carta7.Click += new System.EventHandler(this.carta7_Click);
-            // 
-            // carta8
-            // 
-            this.carta8.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.carta8.Location = new System.Drawing.Point(491, 198);
-            this.carta8.Name = "carta8";
-            this.carta8.Size = new System.Drawing.Size(112, 144);
-            this.carta8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.carta8.TabIndex = 10;
-            this.carta8.TabStop = false;
-            this.carta8.Click += new System.EventHandler(this.carta8_Click);
             // 
             // label1
             // 
@@ -232,6 +144,94 @@ namespace WindowsFormsApp7
             this.restartbtn.UseVisualStyleBackColor = true;
             this.restartbtn.Click += new System.EventHandler(this.restartbtn_Click);
             // 
+            // carta8
+            // 
+            this.carta8.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.carta8.Location = new System.Drawing.Point(491, 198);
+            this.carta8.Name = "carta8";
+            this.carta8.Size = new System.Drawing.Size(112, 144);
+            this.carta8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.carta8.TabIndex = 10;
+            this.carta8.TabStop = false;
+            this.carta8.Click += new System.EventHandler(this.carta8_Click);
+            // 
+            // carta7
+            // 
+            this.carta7.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.carta7.Location = new System.Drawing.Point(347, 198);
+            this.carta7.Name = "carta7";
+            this.carta7.Size = new System.Drawing.Size(112, 144);
+            this.carta7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.carta7.TabIndex = 6;
+            this.carta7.TabStop = false;
+            this.carta7.Click += new System.EventHandler(this.carta7_Click);
+            // 
+            // carta6
+            // 
+            this.carta6.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.carta6.Location = new System.Drawing.Point(199, 198);
+            this.carta6.Name = "carta6";
+            this.carta6.Size = new System.Drawing.Size(112, 144);
+            this.carta6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.carta6.TabIndex = 5;
+            this.carta6.TabStop = false;
+            this.carta6.Click += new System.EventHandler(this.carta6_Click);
+            // 
+            // carta5
+            // 
+            this.carta5.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.carta5.Location = new System.Drawing.Point(51, 198);
+            this.carta5.Name = "carta5";
+            this.carta5.Size = new System.Drawing.Size(112, 144);
+            this.carta5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.carta5.TabIndex = 4;
+            this.carta5.TabStop = false;
+            this.carta5.Click += new System.EventHandler(this.carta5_Click);
+            // 
+            // carta4
+            // 
+            this.carta4.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.carta4.Location = new System.Drawing.Point(491, 27);
+            this.carta4.Name = "carta4";
+            this.carta4.Size = new System.Drawing.Size(112, 144);
+            this.carta4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.carta4.TabIndex = 3;
+            this.carta4.TabStop = false;
+            this.carta4.Click += new System.EventHandler(this.carta4_Click);
+            // 
+            // carta3
+            // 
+            this.carta3.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.carta3.Location = new System.Drawing.Point(347, 27);
+            this.carta3.Name = "carta3";
+            this.carta3.Size = new System.Drawing.Size(112, 144);
+            this.carta3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.carta3.TabIndex = 2;
+            this.carta3.TabStop = false;
+            this.carta3.Click += new System.EventHandler(this.carta3_Click);
+            // 
+            // carta2
+            // 
+            this.carta2.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.carta2.Location = new System.Drawing.Point(199, 27);
+            this.carta2.Name = "carta2";
+            this.carta2.Size = new System.Drawing.Size(112, 144);
+            this.carta2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.carta2.TabIndex = 1;
+            this.carta2.TabStop = false;
+            this.carta2.Click += new System.EventHandler(this.carta2_Click);
+            // 
+            // carta1
+            // 
+            this.carta1.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.carta1.Location = new System.Drawing.Point(51, 27);
+            this.carta1.Name = "carta1";
+            this.carta1.Size = new System.Drawing.Size(112, 144);
+            this.carta1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.carta1.TabIndex = 0;
+            this.carta1.TabStop = false;
+            this.carta1.Click += new System.EventHandler(this.carta1_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -255,18 +255,20 @@ namespace WindowsFormsApp7
             this.Controls.Add(this.carta3);
             this.Controls.Add(this.carta2);
             this.Controls.Add(this.carta1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form2_FormClosed);
             this.Load += new System.EventHandler(this.Form2_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.carta1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carta2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carta3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carta4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carta5)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carta6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.carta7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.carta8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carta7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carta6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carta5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carta4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carta3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carta2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.carta1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -22,6 +22,8 @@ namespace WindowsFormsApp7
         {
             Classifica();
         }
+        //vengono create tre colonne per suddividere la classifica
+        //in seguito vengono presi i valori dal file e dopo, per ogni riga nel, viene creata una nuova riga nella classifica
         private void Classifica()
         {
             Classifica_dgv.Columns.Add("Pos","Posizione");
@@ -30,16 +32,24 @@ namespace WindowsFormsApp7
 
             string posizione_file = AppDomain.CurrentDomain.BaseDirectory + "Classifica.txt";
             string[] classifica = File.ReadAllLines(posizione_file);
-            for(int i = 0; i < classifica.Length - 1; i++)
+            for(int i = 0; i < classifica.Length; i++)
             {
                 string[] giocatore = classifica[i].Split(',');
                 Classifica_dgv.Rows.Add(Convert.ToString(i + 1), giocatore[0], giocatore[1]);
             }
         }
 
+        private void bakcbtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            SchermataPrincipale f1 = new SchermataPrincipale();
+            f1.ShowDialog();
+        }
+
         private void Form3_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
         }
+
     }
 }

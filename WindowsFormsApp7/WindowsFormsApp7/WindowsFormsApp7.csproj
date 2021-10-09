@@ -77,18 +77,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -99,19 +99,19 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\campane_blu.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\magnolia.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\margherita.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\primula.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\sfondo_carta.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\C.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\javascript.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\phyton.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cs.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

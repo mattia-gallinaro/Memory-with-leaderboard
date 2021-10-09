@@ -63,9 +63,9 @@ namespace WindowsFormsApp7.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap campane_blu {
+        internal static System.Drawing.Bitmap C {
             get {
-                object obj = ResourceManager.GetObject("campane_blu", resourceCulture);
+                object obj = ResourceManager.GetObject("C", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace WindowsFormsApp7.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap magnolia {
+        internal static System.Drawing.Bitmap cs {
             get {
-                object obj = ResourceManager.GetObject("magnolia", resourceCulture);
+                object obj = ResourceManager.GetObject("cs", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace WindowsFormsApp7.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap margherita {
+        internal static System.Drawing.Bitmap javascript {
             get {
-                object obj = ResourceManager.GetObject("margherita", resourceCulture);
+                object obj = ResourceManager.GetObject("javascript", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +93,9 @@ namespace WindowsFormsApp7.Properties {
         /// <summary>
         ///   Cerca una risorsa localizzata di tipo System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap primula {
+        internal static System.Drawing.Bitmap python {
             get {
-                object obj = ResourceManager.GetObject("primula", resourceCulture);
+                object obj = ResourceManager.GetObject("python", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

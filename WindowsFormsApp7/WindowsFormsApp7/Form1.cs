@@ -23,8 +23,6 @@ namespace WindowsFormsApp7
             ApriSchermataGioco();
         }
 
-        
-
         private void ApriSchermataGioco()
         {
             this.Hide();
@@ -49,6 +47,11 @@ namespace WindowsFormsApp7
         private void button1_Click(object sender, EventArgs e)
         {
             ApriSchermataClassifica();
+        }
+
+        private void SchermataPrincipale_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
