@@ -46,6 +46,8 @@ namespace WindowsFormsApp7
             this.carta3 = new System.Windows.Forms.PictureBox();
             this.carta2 = new System.Windows.Forms.PictureBox();
             this.carta1 = new System.Windows.Forms.PictureBox();
+            this.ncoppieG1lbl = new System.Windows.Forms.Label();
+            this.ncoppieG2lbl = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.carta8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.carta7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.carta6)).BeginInit();
@@ -125,7 +127,7 @@ namespace WindowsFormsApp7
             // backtostartbtn
             // 
             this.backtostartbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.backtostartbtn.Location = new System.Drawing.Point(658, 261);
+            this.backtostartbtn.Location = new System.Drawing.Point(658, 247);
             this.backtostartbtn.Name = "backtostartbtn";
             this.backtostartbtn.Size = new System.Drawing.Size(250, 35);
             this.backtostartbtn.TabIndex = 18;
@@ -136,7 +138,7 @@ namespace WindowsFormsApp7
             // restartbtn
             // 
             this.restartbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.restartbtn.Location = new System.Drawing.Point(658, 210);
+            this.restartbtn.Location = new System.Drawing.Point(658, 197);
             this.restartbtn.Name = "restartbtn";
             this.restartbtn.Size = new System.Drawing.Size(250, 34);
             this.restartbtn.TabIndex = 19;
@@ -232,12 +234,32 @@ namespace WindowsFormsApp7
             this.carta1.TabStop = false;
             this.carta1.Click += new System.EventHandler(this.carta1_Click);
             // 
+            // ncoppieG1lbl
+            // 
+            this.ncoppieG1lbl.AutoSize = true;
+            this.ncoppieG1lbl.Location = new System.Drawing.Point(688, 304);
+            this.ncoppieG1lbl.Name = "ncoppieG1lbl";
+            this.ncoppieG1lbl.Size = new System.Drawing.Size(49, 13);
+            this.ncoppieG1lbl.TabIndex = 20;
+            this.ncoppieG1lbl.Text = "Coppie 1";
+            // 
+            // ncoppieG2lbl
+            // 
+            this.ncoppieG2lbl.AutoSize = true;
+            this.ncoppieG2lbl.Location = new System.Drawing.Point(842, 304);
+            this.ncoppieG2lbl.Name = "ncoppieG2lbl";
+            this.ncoppieG2lbl.Size = new System.Drawing.Size(35, 13);
+            this.ncoppieG2lbl.TabIndex = 21;
+            this.ncoppieG2lbl.Text = "label5";
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(953, 389);
+            this.Controls.Add(this.ncoppieG2lbl);
+            this.Controls.Add(this.ncoppieG1lbl);
             this.Controls.Add(this.restartbtn);
             this.Controls.Add(this.backtostartbtn);
             this.Controls.Add(this.button2);
@@ -293,5 +315,7 @@ namespace WindowsFormsApp7
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button backtostartbtn;
         private System.Windows.Forms.Button restartbtn;
+        private System.Windows.Forms.Label ncoppieG1lbl;
+        private System.Windows.Forms.Label ncoppieG2lbl;
     }
 }

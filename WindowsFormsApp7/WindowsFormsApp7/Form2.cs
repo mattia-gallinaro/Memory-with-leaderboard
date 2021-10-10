@@ -30,9 +30,20 @@ namespace WindowsFormsApp7
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            creazioneFile();
+        }
+        //controlla che il file della esista sennò viene creato
+        private void creazioneFile()
+        {
+            string posizione_file = AppDomain.CurrentDomain.BaseDirectory + "Classifica.txt";
+            if (!File.Exists(posizione_file))
+            {
+                File.Create(posizione_file);
+            }
             GenerazioneCarte();
         }
 
+        //genera le carte randomicamente
         private void GenerazioneCarte()
         {
             Random generatore = new Random();
@@ -136,6 +147,8 @@ namespace WindowsFormsApp7
             {
                 carte[i].Visible = false;
             }
+            ncoppieG1lbl.Visible = false;
+            ncoppieG2lbl.Visible = false;
             label1.Visible = false;
             label3.Visible = false;
             textBox2.Visible = false;
@@ -177,10 +190,12 @@ namespace WindowsFormsApp7
                     if (turnoG1)
                     {
                         coppiecarteG1++;
+                        ncoppieG1lbl.Text = nomeG1 + ":\n" + Convert.ToString(coppiecarteG1);
                     }
                     else
                     {
                         coppiecarteG2++;
+                        ncoppieG2lbl.Text = nomeG2 + ":\n" + Convert.ToString(coppiecarteG2);
                     }
                 }
             }
@@ -289,16 +304,35 @@ namespace WindowsFormsApp7
             f2.ShowDialog();
         }
 
-        //Controllo il contenuto della textbox non sia vuoto ,che sia diverso dal nome del primo giocatore e che non contenga nessuna virgola
-        private void button2_Click(object sender, EventArgs e)
+        //Controllo il contenuto della textbox non sia vuoto e che non contenga nessuna virgola
+        private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text == "" || textBox2.Text == nomeG1 || controlloNome(textBox2.Text) == true)
+            nomeG1 = textBox1.Text;
+            if (nomeG1 == ""|| nomeG1.Contains(",") || nomeG1.Contains(" ") || nomeG1.Length > 10)
             {
-                MessageBox.Show("Inserisci un nome senza virgole prima di continuare");
+                MessageBox.Show(" Prima di continuare,\n inserisci un nome che abbia queste caratteristiche: \n non contenga virgole \n non sia vuoto \n non contenga spazi");
             }
             else
             {
-                nomeG2 = textBox2.Text;
+                label3.Visible = true;
+                textBox2.Visible = true;
+                button2.Visible = true;
+                label2.Visible = false;
+                textBox1.Visible = false;
+                button1.Visible = false;
+            }
+        }
+
+        //Controllo il contenuto della textbox non sia vuoto ,che sia diverso dal nome del primo giocatore e che non contenga nessuna virgola
+        private void button2_Click(object sender, EventArgs e)
+        {
+            nomeG2 = textBox2.Text;
+            if (nomeG2 == "" || nomeG2.Contains(",") || nomeG2.Contains(" ") || nomeG2 == nomeG1 || nomeG2.Length > 10)
+            {
+                MessageBox.Show(" Prima di continuare,\n inserisci un nome che abbia queste caratteristiche: \n non contenga virgole \n non sia vuoto \n non contenga spazi \n sia diverso dal nome del primo giocatore");
+            }
+            else
+            {
                 for (int i = 0; i < carte.Length; i++)
                 {
                     carte[i].Visible = true;
@@ -308,25 +342,10 @@ namespace WindowsFormsApp7
                 label3.Visible = false;
                 textBox2.Visible = false;
                 button2.Visible = false;
-            }
-        }
-
-        //Controllo il contenuto della textbox non sia vuoto e che non contenga nessuna virgola
-        private void button1_Click(object sender, EventArgs e)
-        {
-            if (textBox1.Text == ""|| controlloNome(textBox1.Text) == true)
-            {
-                MessageBox.Show("Inserisci un nome senza virgole prima di continuare");
-            }
-            else
-            {
-                nomeG1 = textBox1.Text;
-                label3.Visible = true;
-                textBox2.Visible = true;
-                button2.Visible = true;
-                label2.Visible = false;
-                textBox1.Visible = false;
-                button1.Visible = false;
+                ncoppieG1lbl.Text = nomeG1 + ":\n" + Convert.ToString(coppiecarteG1);
+                ncoppieG1lbl.Visible = true;
+                ncoppieG2lbl.Text = nomeG2 + ":\n" + Convert.ToString(coppiecarteG2);
+                ncoppieG2lbl.Visible = true;
             }
         }
 
@@ -351,7 +370,6 @@ namespace WindowsFormsApp7
         {
             CartaClick(3);
         }
-
 
         private void carta4_Click(object sender, EventArgs e)
         {
@@ -382,10 +400,6 @@ namespace WindowsFormsApp7
         private void SalvaVittoria(string nomevincitore)
         {
             string posizione_file = AppDomain.CurrentDomain.BaseDirectory + "Classifica.txt";
-            if (!File.Exists(posizione_file))
-            {
-                File.Create(posizione_file);
-            }
             string[] giocatorifile = File.ReadAllLines(posizione_file);
             bool salvataggio = false;
             for(int i= 0; i < 3 && salvataggio == false; i++)
@@ -441,21 +455,6 @@ namespace WindowsFormsApp7
             }
             File.WriteAllLines(posizione_file, array);
             MostraBottoni();
-        }
-
-        //controllo se l'utente abbia inserito come nome anche solo una virgola
-        private bool controlloNome(string nome)
-        {
-            string[] controllo = nome.Split(',');
-            int quantità = controllo.Length;
-            if(quantità > 1)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
         }
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
