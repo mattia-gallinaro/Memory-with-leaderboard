@@ -24,7 +24,7 @@ namespace WindowsFormsApp7
         static int cs = 0, C = 0, javascript = 0, python = 0;
         int[] quantitàgenerate = new int[4] { cs, C, javascript, python };
         bool[] selezioneCarte = new bool[8];
-        string[] fioriGenerati = new string[8];
+        string[] carteGenerate = new string[8];
         PictureBox[] carte = new PictureBox[8];
         int carteselezionate = 0, card1 = 0, card2 = 0, coppiecarteG1 = 0, coppiecarteG2 = 0;
 
@@ -58,8 +58,8 @@ namespace WindowsFormsApp7
                 }
                 else
                 {
-                    //crea una carta con rispettivo sfondo e 
-                    fioriGenerati[i] = AssegnazioneCarte(numerogen);
+                    //crea una carta con il rispettivo tipo della carta
+                    carteGenerate[i] = AssegnazioneCarte(numerogen);
                 }
 
             }
@@ -156,7 +156,7 @@ namespace WindowsFormsApp7
             backtostartbtn.Visible = false;
             restartbtn.Visible = false;
         }
-        //in base alla carta premuta, essa viene gira
+        //in base alla carta premuta, essa viene girata
         private void CartaClick(int n1)
         {
             n1 -= 1;
@@ -175,7 +175,7 @@ namespace WindowsFormsApp7
             if(carteselezionate % 2 == 0)
             {
                 card2 = indicecarta;
-                if(fioriGenerati[card1] != fioriGenerati[card2])
+                if(carteGenerate[card1] != carteGenerate[card2])
                 {
                     selezioneCarte[card1] = false;
                     selezioneCarte[card2] = false;
@@ -254,15 +254,15 @@ namespace WindowsFormsApp7
         //assegna alla picturebox, l'immagine corrispondente in base al valore dell'array dei tipi di carte corrispondente
         private System.Drawing.Image creazioneimmagine(int indice)
         {
-            if(fioriGenerati[indice] == "cs")
+            if(carteGenerate[indice] == "cs")
             {
                 return Properties.Resources.cs;
             }
-            else if (fioriGenerati[indice] == "C")
+            else if (carteGenerate[indice] == "C")
             {
                 return Properties.Resources.C;
             }
-            else if (fioriGenerati[indice] == "javascript")
+            else if (carteGenerate[indice] == "javascript")
             {
                 return Properties.Resources.javascript;
             }
@@ -288,7 +288,7 @@ namespace WindowsFormsApp7
             }
         }
 
-        //crea un'altro form2 per ricomniare la partita
+        //crea il form della schermata principale e nasconde il form2
         private void backtostartbtn_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -310,7 +310,7 @@ namespace WindowsFormsApp7
             nomeG1 = textBox1.Text;
             if (nomeG1 == ""|| nomeG1.Contains(",") || nomeG1.Contains(" ") || nomeG1.Length > 10)
             {
-                MessageBox.Show(" Prima di continuare,\n inserisci un nome che abbia queste caratteristiche: \n non contenga virgole \n non sia vuoto \n non contenga spazi");
+                MessageBox.Show(" Prima di continuare,\n inserisci un nome che abbia queste caratteristiche: \n non contenga virgole \n non sia vuoto \n non contenga spazi \n sia meno lungo di 10 caratteri");
             }
             else
             {
@@ -323,13 +323,13 @@ namespace WindowsFormsApp7
             }
         }
 
-        //Controllo il contenuto della textbox non sia vuoto ,che sia diverso dal nome del primo giocatore e che non contenga nessuna virgola
+        //Controllo il contenuto della textbox non sia vuoto ,che sia diverso dal nome del primo giocatore e che non contenga nessuna virgola e che sia meno lungo di 10 caratteri
         private void button2_Click(object sender, EventArgs e)
         {
             nomeG2 = textBox2.Text;
             if (nomeG2 == "" || nomeG2.Contains(",") || nomeG2.Contains(" ") || nomeG2 == nomeG1 || nomeG2.Length > 10)
             {
-                MessageBox.Show(" Prima di continuare,\n inserisci un nome che abbia queste caratteristiche: \n non contenga virgole \n non sia vuoto \n non contenga spazi \n sia diverso dal nome del primo giocatore");
+                MessageBox.Show(" Prima di continuare,\n inserisci un nome che abbia queste caratteristiche: \n non contenga virgole \n non sia vuoto \n non contenga spazi \n sia diverso dal nome del primo giocatore \n sia meno lungo di 10 caratteri");
             }
             else
             {
